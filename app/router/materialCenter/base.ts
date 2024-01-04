@@ -57,6 +57,9 @@ export default (app: Application) => {
   subRouter.post('/block-history/create', controller.materialCenter.blockHistory.create);
   subRouter.get('/block-history/delete/:id', controller.materialCenter.blockHistory.delete);
 
+  // 物料构建
+  subRouter.get('/material/build/:id', controller.materialCenter.material.build);
+
 
   // 任务记录查询
   subRouter.get('/tasks/status', controller.materialCenter.task.status);
