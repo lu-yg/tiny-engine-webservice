@@ -272,4 +272,8 @@ module.exports = {
     }
   },
 
+  formatNameStr(str: string){
+    return str.replace(/[^\w]/gi,'').toLocaleLowerCase
+  }
+
 };
