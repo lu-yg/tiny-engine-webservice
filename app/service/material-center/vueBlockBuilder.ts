@@ -9,11 +9,11 @@
 * A PARTICULAR PURPOSE. SEE THE APPLICABLE LICENSES FOR MORE DETAILS.
 *
 */
-import * as path from 'path'
-import * as fs from 'fs-extra'
-import spawn from 'cross-spawn'
+import spawn from 'cross-spawn';
 import { Service } from 'egg';
-export default class VueBlockBuilder extends Service{
+import * as fs from 'fs-extra';
+import * as path from 'path';
+export default class VueBlockBuilder extends Service {
   base = this.config.buildground
   baseNpm = this.config.baseNpm
   framework = 'Vue'
@@ -41,11 +41,8 @@ export default class VueBlockBuilder extends Service{
     const buildGround = this.getBuildGround()
     const baseNpm = this.baseNpm
     await fs.ensureDir(buildGround)
-    await this.spawnCommand(['npm', 'set', 'progress=false'], {
-      cwd: buildGround
-    })
     await this.spawnCommand(['npm', 'init', '-y'], { cwd: buildGround })
-    const registries = this.config.npmRegistryOptions
+    const registries = this.config.cnpmRegistryOptions
     await this.spawnCommand(['npm', 'pack', baseNpm, ...registries, '--strict-ssl=false'], {
       cwd: buildGround
     })
@@ -53,8 +50,9 @@ export default class VueBlockBuilder extends Service{
     // 解压tgz包
     await this.spawnCommand(['tar', '-xzvf', tgz], { cwd: buildGround })
     await fs.copy(path.join(buildGround, 'package'), buildGround)
+
     await this.spawnCommand(
-      ['npm', 'install', ...registries, '--no-audit', '--no-fund', '--production=false', '--strict-ssl=false'],
+      ['pnpm', 'install', ...registries, '--production=false'],
       {
         cwd: buildGround
       }
@@ -123,7 +121,7 @@ export default class VueBlockBuilder extends Service{
   // 获取tgz路径
   async findTgz(dir) {
     const fileList = await fs.readdir(dir)
-    return fileList.find((file) => /^opentiny-tiny-engine-block-build-0.*\.tgz$/.test(file)) || '' //TODO 这里匹配的是包tgz文件的名称，择机替换为opentiny的
+    return fileList.find((file) => /^opentiny-tiny-engine-block-build-*.*\.tgz$/.test(file)) || '' //TODO 这里匹配的是包tgz文件的名称，择机替换为opentiny的
   }
 
   // 执行命令

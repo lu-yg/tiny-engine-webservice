@@ -342,6 +342,7 @@ export interface I_CreateComponent {
 
 // 任务记录
 export interface I_UpdateTaskParam {
+  msg?: any;
   taskStatus?: number;
   progress?: string;
   taskResult?: string;
@@ -393,6 +394,13 @@ export interface I_CreateBlockHistoryParam {
   i18n?: any;
   created_app?: string | number; // 区块被哪个app创建
   content_blocks?: Array<any> | null;
+}
+
+export interface I_CreateBlockCarriesRelations{
+  block: number;
+  host: number;
+  host_type: string;
+  version: string;
 }
 
 export type I_UpdateBlockHistoryParam = Partial<I_CreateBlockHistoryParam> & { id: string };

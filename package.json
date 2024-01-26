@@ -92,5 +92,8 @@
   },
   "eslintIgnore": [
     "coverage"
-  ]
+  ],
+  "pnpm": {
+    "shamefully-hoist": true
+}
 }

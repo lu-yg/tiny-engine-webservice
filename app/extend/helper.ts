@@ -273,7 +273,18 @@ module.exports = {
   },
 
   formatNameStr(str: string){
-    return str.replace(/[^\w]/gi,'').toLocaleLowerCase
+    return str.replace(/[^\w]/gi, '').toLocaleLowerCase
+  },
+
+  getResponseDate(data: any = null, error?: I_ErrorData): I_Response{
+    const res: I_Response = {};
+    if(data){
+      res.data = data;
+    }
+    if(error){
+      res.error = error;
+    }
+    return res;
   }
 
 };

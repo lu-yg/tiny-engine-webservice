@@ -12,6 +12,7 @@
 import { Subscription } from 'egg';
 import { E_TaskStatus, E_TaskType } from '../lib/enum';
 
+
 class ProgressTask extends Subscription {
   // 通过 schedule 属性来设置定时任务的执行间隔等配置
   static get schedule() {

@@ -9,10 +9,10 @@
 * A PARTICULAR PURPOSE. SEE THE APPLICABLE LICENSES FOR MORE DETAILS.
 *
 */
-import DataService from '../dataService';
 import * as qs from 'querystring';
 import { E_Method } from '../../lib/enum';
-import { I_CreateBlockHistoryParam, I_Response, I_UpdateBlockHistoryParam } from '../../lib/interface';
+import { I_CreateBlockCarriesRelations, I_CreateBlockHistoryParam, I_Response, I_UpdateBlockHistoryParam } from '../../lib/interface';
+import DataService from '../dataService';
 export default class BlockHistoryService extends DataService{
   create(param: I_CreateBlockHistoryParam) {
     return this.query({
@@ -42,5 +42,13 @@ export default class BlockHistoryService extends DataService{
   async isHistoryExisted(blockId: string | number, version: string): Promise<boolean> {
     const history: I_Response = await this.find({block_id: blockId, version});
     return !!history.data.length;
+  }
+  async updateRelations(param: Array<I_CreateBlockCarriesRelations>) {
+    const res = await this.query({
+      url: 'blocks-carriers-relations/bulk/create',
+      method: E_Method.Post,
+      data: param
+    });
+    return res;
   }
 }

@@ -9,10 +9,10 @@
 * A PARTICULAR PURPOSE. SEE THE APPLICABLE LICENSES FOR MORE DETAILS.
 *
 */
-import * as path from 'path';
 import { EggAppConfig, PowerPartial } from 'egg';
+import * as path from 'path';
+import { E_FOUNDATION_MODEL, E_SchemaFormatFunc } from '../app/lib/enum';
 import { I_SchemaConvert } from '../app/lib/interface';
-import { E_SchemaFormatFunc, E_FOUNDATION_MODEL } from '../app/lib/enum';
 
 
 export default (appInfo) => {
@@ -280,6 +280,9 @@ export default (appInfo) => {
   config.npmRegistryOptions = [
     '--registry=https://registry.npmjs.org/',
   ];
+  config.cnpmRegistryOptions = [
+    '--registry=http://registry.npmmirror.com/'
+  ]
 
   config.buildground = '/tmp/buildground';
   config.baseNpm = '@opentiny/tiny-engine-block-build';
