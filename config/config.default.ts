@@ -281,6 +281,13 @@ export default (appInfo) => {
     '--registry=https://registry.npmjs.org/',
   ];
 
+  config.static = {
+    prefix: ''
+  };
+  config.view = {
+    root: path.join(appInfo.baseDir, 'app/view'),
+    defaultViewEngine: 'nunjucks'
+  }
   config.buildground = '/tmp/buildground';
   config.baseNpm = '@opentiny/tiny-engine-block-build';
   config.authToken = process.env.NPM_AUTH_TOKEN; // 替换为自己的npm token

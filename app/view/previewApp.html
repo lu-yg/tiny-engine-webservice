@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>self["MonacoEnvironment"] = (function (paths) {
+      return {
+        globalAPI: false,
+        getWorkerUrl: function (moduleId, label) {
+          var result = paths[label];
+          if (/^((http:)|(https:)|(file:)|(\/\/))/.test(result)) {
+            var currentUrl = String(window.location);
+            var currentOrigin = currentUrl.substr(0, currentUrl.length - window.location.hash.length - window.location.search.length - window.location.pathname.length);
+            if (result.substring(0, currentOrigin.length) !== currentOrigin) {
+              var js = '/*' + label + '*/importScripts("' + result + '");';
+              var blob = new Blob([js], { type: 'application/javascript' });
+              return URL.createObjectURL(blob);
+            }
+          }
+          return result;
+        }
+      };
+    })({
+      "editorWorkerService": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/editor.worker.bundle.js",
+      "css": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/css.worker.bundle.js",
+      "html": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/html.worker.bundle.js",
+      "json": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/json.worker.bundle.js",
+      "typescript": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/ts.worker.bundle.js",
+      "javascript": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/ts.worker.bundle.js",
+      "less": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/css.worker.bundle.js",
+      "scss": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/css.worker.bundle.js",
+      "handlebars": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/html.worker.bundle.js",
+      "razor": "https://tinyengine-assets.obs.cn-north-4.myhuaweicloud.com/files/monaco-assets/html.worker.bundle.js"
+    });</script>
+
+
+  <link rel="stylesheet" href="https://npm.onmicrosoft.cn/@opentiny/vue-theme@~3.11/index.css">
+
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+  <meta charset="UTF-8" />
+  <link rel="icon" href="./favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Core Preview</title>
+  <script type="importmap">{
+  "imports": {
+    "prettier": "https://npm.onmicrosoft.cn/prettier@2.7.1/esm/standalone.mjs",
+    "prettier/": "https://npm.onmicrosoft.cn/prettier@2.7.1/esm/",
+    "prettier/parser-typescript": "https://npm.onmicrosoft.cn/prettier@2.7.1/esm/parser-typescript.mjs",
+    "prettier/parser-html": "https://npm.onmicrosoft.cn/prettier@2.7.1/esm/parser-html.mjs",
+    "prettier/parser-postcss": "https://npm.onmicrosoft.cn/prettier@2.7.1/esm/parser-postcss.mjs",
+    "prettier/parser-babel": "https://npm.onmicrosoft.cn/prettier@2.7.1/esm/parser-babel.mjs",
+    "vue": "https://npm.onmicrosoft.cn/vue@3/dist/vue.runtime.esm-browser.js",
+    "@opentiny/vue": "https://npm.onmicrosoft.cn/@opentiny/vue@~3.11/runtime/tiny-vue.mjs",
+    "@opentiny/vue-icon": "https://npm.onmicrosoft.cn/@opentiny/vue@~3.11/runtime/tiny-vue-icon.mjs",
+    "@opentiny/vue-common": "https://npm.onmicrosoft.cn/@opentiny/vue@~3.11/runtime/tiny-vue-common.mjs",
+    "@opentiny/vue-locale": "https://npm.onmicrosoft.cn/@opentiny/vue@~3.11/runtime/tiny-vue-locale.mjs",
+    "@opentiny/vue-design-smb": "https://npm.onmicrosoft.cn/@opentiny/vue-design-smb@~3.11/index.js",
+    "@opentiny/vue-theme/theme-tool": "https://unpkg.com/@opentiny/vue-theme@~3.11/theme-tool",
+    "@opentiny/vue-theme/theme": "https://unpkg.com/@opentiny/vue-theme@~3.11/theme"
+  }
+}</script>
+  <script type="module" crossorigin src="http://localhost:7011/assets/previewApp-6a470227.js"></script>
+  <link rel="modulepreload" crossorigin href="http://localhost:7011/assets/monaco-73815df4.js">
+  <link rel="modulepreload" crossorigin href="http://localhost:7011/assets/vendor-6a2a38e0.js">
+  <link rel="modulepreload" crossorigin href="http://localhost:7011/assets/index-11692c7d.js">
+  <link rel="modulepreload" crossorigin href="http://localhost:7011/assets/_plugin-vue_export-helper-c27b6911.js">
+  <link rel="stylesheet" href="http://localhost:7011/assets/index-51d517f4.css">
+  <link rel="stylesheet" href="http://localhost:7011/assets/vendor-501af265.css">
+  <link rel="stylesheet" href="http://localhost:7011/assets/monaco-98396178.css">
+  <link rel="stylesheet" href="http://localhost:7011/assets/previewApp-c5f5bf3b.css">
+</head>
+
+<body>
+  <div id="app"></div>
+
+</body>
+
+</html>

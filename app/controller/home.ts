@@ -12,11 +12,27 @@
 import { Controller } from 'egg';
 
 export default class HomeController extends Controller {
+  /*
   public async index() {
     const { ctx } = this;
     ctx.body = await ctx.service.test.sayHi('sora');
   }
+  */
+  public async index() {
+    await this.ctx.render('index');
+  }
 
+  public async canvas() {
+    await this.ctx.render('canvas');
+  }
+
+  public async preview() {
+    await this.ctx.render('preview');
+  }
+
+  public async previewApp() {
+    await this.ctx.render('previewApp')
+  }
   public healthCheck() {
     const { ctx } = this;
     ctx.response.status = 200;

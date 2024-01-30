@@ -14,8 +14,8 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --stdout=/opt/cloud/logs/master-stdout.log --stderr=/opt/cloud/logs/master-stderr.log --title=lowcode-webservice",
-    "stop": "egg-scripts stop --stdout=/opt/cloud/logs/master-stdout.log --stderr=/opt/cloud/logs/master-stderr.log --title=lowcode-webservice",
+    "start": "egg-scripts start --daemon --stdout=./logs/master-stdout.log --stderr=./logs/master-stderr.log --title=lowcode-webservice",
+    "stop": "egg-scripts stop --stdout=./logs/master-stdout.log --stderr=./logs/master-stderr.log --title=lowcode-webservice",
     "dev": "egg-bin dev --port 7011",
     "debug": "egg-bin debug --port 7011",
     "test-local": "egg-bin test",
@@ -57,6 +57,7 @@
     "egg-ts-helper": "^1.25.7",
     "egg-validate": "^2.0.2",
     "egg-view-ejs": "^2.0.1",
+    "egg-view-nunjucks": "^2.3.0",
     "esdk-obs-nodejs": "^3.21.6",
     "fs-extra": "^10.1.0",
     "glob": "^10.3.10",
